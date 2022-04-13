@@ -14,3 +14,12 @@ function human(name, weight, height, diet) {
   this.height = height;
   this.diet = diet;
 }
+
+function fetchData(){
+  fetch('dino.json')
+    .then(response => {
+      return response.json(); 
+    })
+    .then((data) => console.log(data))
+}
+fetchData(); 
