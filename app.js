@@ -1,3 +1,5 @@
+const button = document.getElementById("btn");
+
 function dinosaur(species, weight, height, diet, where, when, fact) {
   this.species = species;
   this.weight = weight;
