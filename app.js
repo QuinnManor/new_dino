@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 function dinosaur(species, weight, height, diet, where, when, fact) {
   this.species = species;
   this.weight = weight;
@@ -21,4 +22,3 @@ function human (name, weight, height, diet){
   const formRef = document.getElementById("dino-compare");
   const compareMeButtonRef = document.getElementById("btn");
   compareMeButtonRef.addEventListener("click",()=> clearScreen(formRef));
-  
