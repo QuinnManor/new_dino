@@ -20,6 +20,34 @@ function fetchData(){
     .then(response => {
       return response.json(); 
     })
-    .then((data) => console.log(data))
+    .then((data) => {
+    console.log(data)
+    })
+    
 }
-fetchData(); 
+
+
+document.addEventListener("DOMContentLoaded", function () {
+const form = document.getElementById("dino-compare");
+  console.log("ready");
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+     e.stopPropagation();
+     const elements = Array.from(e.currentTarget);
+     const state = elements.reduce((acc, el) => {
+       if (el.name) {
+         acc[el.name] = el.value;
+       }
+
+       return acc;
+     }, {});
+
+     console.log(state); // {test: '123'}
+
+
+
+  form.remove();
+  console.log("Js working");
+  fetchData();
+});
+});
