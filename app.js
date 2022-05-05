@@ -1,3 +1,9 @@
+const button = document.getElementById("btn");
+const formRef = document.getElementById("dino-compare");
+const clearScreen = (ref) => {
+  ref.remove();
+};
+
 function dinosaur(species, weight, height, diet, where, when, fact) {
   this.species = species;
   this.weight = weight;
@@ -7,6 +13,7 @@ function dinosaur(species, weight, height, diet, where, when, fact) {
   this.when = when;
   this.fact = fact;
 }
+
 function human(name, weight, height, diet) {
   this.name = name;
   this.weight = weight;
@@ -14,10 +21,28 @@ function human(name, weight, height, diet) {
   this.diet = diet;
 }
 
-const clearScreen = (ref) => {
-  ref.remove();
-};
+function fetchData() {
+  fetch("dino.json")
+    .then((response) => {
+      return response.json();
+    })
+    .then((data) => console.log(data));
+}
 
-const formRef = document.getElementById("dino-compare");
-const compareMeButtonRef = document.getElementById("btn");
-compareMeButtonRef.addEventListener("click", () => clearScreen(formRef));
+function getHumanData() {
+  return (function () {
+    const humanName = document.getElementById("name").value;
+    const humanFeet = document.getElementById("feet").value;
+    const humanInches = document.getElementById("inches").value;
+    const humanWeight = document.getElementById("weight").value;
+    const humanDiet = document.getElementById("diet").value;
+    let height = parseInt(humanFeet) * 12 + parseInt(humanInches);
+
+    return new human(humanName, humanWeight, height, humanDiet);
+  })();
+}
+
+button.addEventListener("click", () => {
+  console.log(getHumanData());
+  clearScreen(formRef);
+});
