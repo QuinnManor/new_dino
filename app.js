@@ -1,4 +1,8 @@
 const button = document.getElementById("btn");
+const formRef = document.getElementById("dino-compare");
+const clearScreen = (ref) => {
+  ref.remove();
+};
 
 function dinosaur(species, weight, height, diet, where, when, fact) {
   this.species = species;
@@ -38,4 +42,7 @@ function getHumanData() {
   })();
 }
 
-button.addEventListener("click", getHumanData);
+button.addEventListener("click", () => {
+  console.log(getHumanData());
+  clearScreen(formRef);
+});
