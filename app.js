@@ -53,3 +53,8 @@ function heightDifference(){
   return (dinosaur.height - humanHeight);
 }
 console.log(heightDifference);
+
+function dietDifference(){
+  return (dinosaur.diet - humanDiet);
+}
+console.log(dietDifference);
