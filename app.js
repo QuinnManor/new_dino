@@ -42,13 +42,13 @@ function getHumanData() {
   })();
 }
 
+function heightDifference(){
+  return (dinosaur.height - humanHeight);
+}
+console.log(heightDifference);
+
 button.addEventListener("click", () => {
   console.log(getHumanData());
   clearScreen(formRef);
 });
 
-
-function heightDifference(){
-  return (dinosaur.height - humanHeight);
-}
-console.log(heightDifference);
