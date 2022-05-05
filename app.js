@@ -1,4 +1,4 @@
-function dinosaur(species, weight, height, diet, where, when, fact) {
+function Dinosaur(species, weight, height, diet, where, when, fact) {
   this.species = species;
   this.weight = weight;
   this.height = height;
@@ -15,6 +15,7 @@ function human(name, weight, height, diet) {
   this.diet = diet;
 }
 
+
 function fetchData(){
   fetch('dino.json')
     .then(response => {
@@ -23,3 +24,4 @@ function fetchData(){
     .then((data) => console.log(data))
 }
 fetchData(); 
+
