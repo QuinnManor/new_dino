@@ -48,8 +48,7 @@ button.addEventListener("click", () => {
 });
 
 
-//Used card DI-10 as a referance point, honestly for the sake of clarity/keeping things clean it might be best for us to just merge the height, weight, and diet into one function. Though I don't know if that'd be best for functionality.
 function heightDifference(){
-  return (dinosaur.height - height);
+  return (dinosaur.height - humanHeight);
 }
 console.log(heightDifference);
