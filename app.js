@@ -42,7 +42,18 @@ function getHumanData() {
   })();
 }
 
+function populateTiles() {
+  for (let i = 0; i < 9; i++){
+    console.log("Apples")
+  }
+  // create a tileDiv that creates a new div element
+  // access the grid item on the page
+  // for 9 titles, append the titleDiv to the grid
+  
+}
+
 button.addEventListener("click", () => {
   console.log(getHumanData());
   clearScreen(formRef);
+  populateTiles()
 });
