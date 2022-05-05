@@ -7,7 +7,6 @@ function dinosaur(species, weight, height, diet, where, when, fact) {
   this.when = when;
   this.fact = fact;
 }
-
 function human(name, weight, height, diet) {
   this.name = name;
   this.weight = weight;
@@ -15,11 +14,10 @@ function human(name, weight, height, diet) {
   this.diet = diet;
 }
 
-function fetchData(){
-  fetch('dino.json')
-    .then(response => {
-      return response.json(); 
-    })
-    .then((data) => console.log(data))
-}
-fetchData(); 
+const clearScreen = (ref) => {
+  ref.remove();
+};
+
+const formRef = document.getElementById("dino-compare");
+const compareMeButtonRef = document.getElementById("btn");
+compareMeButtonRef.addEventListener("click", () => clearScreen(formRef));
