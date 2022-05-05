@@ -1,3 +1,9 @@
+const button = document.getElementById("btn");
+const formRef = document.getElementById("dino-compare");
+const clearScreen = (ref) => {
+  ref.remove();
+};
+
 function dinosaur(species, weight, height, diet, where, when, fact) {
   this.species = species;
   this.weight = weight;
@@ -15,39 +21,28 @@ function human(name, weight, height, diet) {
   this.diet = diet;
 }
 
-function fetchData(){
-  fetch('dino.json')
-    .then(response => {
-      return response.json(); 
+function fetchData() {
+  fetch("dino.json")
+    .then((response) => {
+      return response.json();
     })
-    .then((data) => {
-    console.log(data)
-    })
-    
+    .then((data) => console.log(data));
 }
 
+function getHumanData() {
+  return (function () {
+    const humanName = document.getElementById("name").value;
+    const humanFeet = document.getElementById("feet").value;
+    const humanInches = document.getElementById("inches").value;
+    const humanWeight = document.getElementById("weight").value;
+    const humanDiet = document.getElementById("diet").value;
+    let height = parseInt(humanFeet) * 12 + parseInt(humanInches);
 
-document.addEventListener("DOMContentLoaded", function () {
-const form = document.getElementById("dino-compare");
-  console.log("ready");
-form.addEventListener("submit", (e) => {
-  e.preventDefault();
-     e.stopPropagation();
-     const elements = Array.from(e.currentTarget);
-     const state = elements.reduce((acc, el) => {
-       if (el.name) {
-         acc[el.name] = el.value;
-       }
+    return new human(humanName, humanWeight, height, humanDiet);
+  })();
+}
 
-       return acc;
-     }, {});
-
-     console.log(state); // {test: '123'}
-
-
-
-  form.remove();
-  console.log("Js working");
-  fetchData();
-});
+button.addEventListener("click", () => {
+  console.log(getHumanData());
+  clearScreen(formRef);
 });
