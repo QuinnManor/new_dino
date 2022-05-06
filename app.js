@@ -47,6 +47,11 @@ function heightDifference(){
 }
 console.log(heightDifference);
 
+function dietDifference(){
+  return (dinosaur.diet);
+}
+console.log(dietDifference);
+
 button.addEventListener("click", () => {
   console.log(getHumanData());
   clearScreen(formRef);
