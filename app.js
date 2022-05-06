@@ -42,7 +42,18 @@ function getHumanData() {
   })();
 }
 
+function heightDifference(){
+  return (dinosaur.height - humanHeight);
+}
+console.log(heightDifference);
+
+function dietDifference(){
+  return (dinosaur.diet);
+}
+console.log(dietDifference);
+
 button.addEventListener("click", () => {
   console.log(getHumanData());
   clearScreen(formRef);
 });
+
