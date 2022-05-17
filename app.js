@@ -22,12 +22,20 @@ function human(name, weight, height, diet) {
 }
 
 function fetchData() {
+  let dinoArr = [];
   fetch("dino.json")
     .then((response) => {
       return response.json();
     })
-    .then((data) => console.log(data));
+    .then((data) => {
+      data.Dinos.forEach(dino =>{
+        let dinoObj = new dinosaur(dino.species, dino.weight, dino.height, dino.diet, dino.where, dino.when, dino.fact)
+        dinoArr.push(dinoObj)
+      })
+    });
+  return dinoArr;
 }
+console.log(fetchData());
 
 function getHumanData() {
   return (function () {
@@ -42,6 +50,7 @@ function getHumanData() {
   })();
 }
 
+
 function populateTiles() {
   for (let i = 0; i < 9; i++){
     console.log("Apples")
@@ -52,8 +61,20 @@ function populateTiles() {
   
 }
 
+function heightDifference(){
+  return (dinosaur.height - humanHeight);
+}
+console.log(heightDifference);
+
+function dietDifference(){
+  return (dinosaur.diet);
+}
+console.log(dietDifference);
+
+
 button.addEventListener("click", () => {
   console.log(getHumanData());
   clearScreen(formRef);
   populateTiles()
 });
+
