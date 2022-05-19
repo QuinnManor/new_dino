@@ -53,12 +53,11 @@ function getHumanData() {
 
 function populateTiles() {
   for (let i = 0; i < 9; i++){
-    console.log("Apples")
+    const tile = document.createElement("div")
+    tile.className = "grid-item"
+    tile.innerHTML = `<h2>Hello</h2> <img src="images/human.png"/> <h3>Hi</h3>`
+    document.querySelector("#grid").appendChild(tile)
   }
-  // create a tileDiv that creates a new div element
-  // access the grid item on the page
-  // for 9 titles, append the titleDiv to the grid
-  
 }
 
 function heightDifference(){
