@@ -33,7 +33,6 @@ fetch("dino.json")
     })
   });
 
-console.log(fetchData());
 
 function getHumanData() {
   return (function () {
@@ -49,10 +48,11 @@ function getHumanData() {
 }
 
 function populateTiles() {
-  for (let i = 0; i < 9; i++){
+  for (let i = 0; i < 8; i++){
     const tile = document.createElement("div")
+
     tile.className = "grid-item"
-    tile.innerHTML = `<h2>Hello</h2> <img src="images/human.png"/> <h3>Hi</h3>`
+    tile.innerHTML = `<h2>${dinoArr[i].species}</h2> <img src="images/${dinoArr[i].species.toLowerCase()}.png"/> <h3>${dinoArr[i].fact}</h3>`
     document.querySelector("#grid").appendChild(tile)
   }
 }
