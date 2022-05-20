@@ -15,27 +15,26 @@ function dinosaur(species, weight, height, diet, where, when, fact) {
 }
 
 function human(name, weight, height, diet) {
+  this.species = "human";
+  this.fact = "Random Fact"
   this.name = name;
   this.weight = weight;
   this.height = height;
   this.diet = diet;
 }
 
-function fetchData() {
-  let dinoArr = [];
-  fetch("dino.json")
-    .then((response) => {
-      return response.json();
+let dinoArr = [];
+fetch("dino.json")
+  .then((response) => {
+    return response.json();
+  })
+  .then((data) => {
+    data.Dinos.forEach(dino =>{
+      let dinoObj = new dinosaur(dino.species, dino.weight, dino.height, dino.diet, dino.where, dino.when, dino.fact)
+      dinoArr.push(dinoObj)
     })
-    .then((data) => {
-      data.Dinos.forEach(dino =>{
-        let dinoObj = new dinosaur(dino.species, dino.weight, dino.height, dino.diet, dino.where, dino.when, dino.fact)
-        dinoArr.push(dinoObj)
-      })
-    });
-  return dinoArr;
-}
-console.log(fetchData());
+  });
+
 
 function getHumanData() {
   return (function () {
@@ -51,10 +50,13 @@ function getHumanData() {
 }
 
 function populateTiles() {
-  for (let i = 0; i < 9; i++){
+  let humanData = getHumanData();
+  clearScreen(formRef);
+  dinoArr.splice(4,0,humanData);
+  for (let i = 0; i < dinoArr.length; i++){
     const tile = document.createElement("div")
     tile.className = "grid-item"
-    tile.innerHTML = `<h2>Hello</h2> <img src="images/human.png"/> <h3>Hi</h3>`
+    tile.innerHTML = `<h2>${dinoArr[i].species}</h2> <img src="images/${dinoArr[i].species.toLowerCase()}.png"/> <h3>${dinoArr[i].fact}</h3>`
     document.querySelector("#grid").appendChild(tile)
   }
 }
@@ -71,8 +73,7 @@ console.log(dietDifference);
 
 
 button.addEventListener("click", () => {
-  console.log(getHumanData());
-  clearScreen(formRef);
+ 
   populateTiles()
 });
 
