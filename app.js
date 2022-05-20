@@ -15,6 +15,8 @@ function dinosaur(species, weight, height, diet, where, when, fact) {
 }
 
 function human(name, weight, height, diet) {
+  this.species = "human";
+  this.fact = "Random Fact"
   this.name = name;
   this.weight = weight;
   this.height = height;
@@ -48,9 +50,11 @@ function getHumanData() {
 }
 
 function populateTiles() {
-  for (let i = 0; i < 8; i++){
+  let humanData = getHumanData();
+  clearScreen(formRef);
+  dinoArr.splice(4,0,humanData);
+  for (let i = 0; i < dinoArr.length; i++){
     const tile = document.createElement("div")
-
     tile.className = "grid-item"
     tile.innerHTML = `<h2>${dinoArr[i].species}</h2> <img src="images/${dinoArr[i].species.toLowerCase()}.png"/> <h3>${dinoArr[i].fact}</h3>`
     document.querySelector("#grid").appendChild(tile)
@@ -69,8 +73,7 @@ console.log(dietDifference);
 
 
 button.addEventListener("click", () => {
-  console.log(getHumanData());
-  clearScreen(formRef);
+ 
   populateTiles()
 });
 
